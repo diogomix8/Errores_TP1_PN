@@ -1,0 +1,6 @@
+{
+  "name": "Errores TP1 PN",
+  "tagline": "Bloque de Programación para el Trabajo Práctico de Programación Numérica.",
+  "body": "# Bloque 2 – Programación\r\nDiseñar un programa que permita convertir un número de la base B en otra de base B',sabiendo que tanto la base B , como B' son enteros en el rango [2, 16]. El programa\r\ndeberá:\r\n\r\n_1. Mostrar el número en la base B' con todos sus dígitos (cuando sea posible) en punto flotante normalizado, y sin normalizar._\r\n\r\n_2. Mostrar el número de la base B' en los dos formatos de representación: por corte y por redondeo simétrico, según la cantidad de dígitos t de precisión ingresado por el usuario. Ambos formatos, deberán mostrarse en punto flotante normalizado y sin normalizar._\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
