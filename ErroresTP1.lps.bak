@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CONFIG>
+  <ProjectSession>
+    <Version Value="9"/>
+    <BuildModes Active="Default"/>
+    <Units Count="5">
+      <Unit0>
+        <Filename Value="ErroresTP1.lpr"/>
+        <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
+        <WindowIndex Value="-1"/>
+        <TopLine Value="-1"/>
+        <CursorPos X="-1" Y="-1"/>
+        <UsageCount Value="22"/>
+      </Unit0>
+      <Unit1>
+        <Filename Value="uformmainerrores.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="Errores"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="UFormMainErrores"/>
+        <IsVisibleTab Value="True"/>
+        <TopLine Value="31"/>
+        <CursorPos X="3" Y="68"/>
+        <UsageCount Value="22"/>
+        <Loaded Value="True"/>
+        <LoadedDesigner Value="True"/>
+      </Unit1>
+      <Unit2>
+        <Filename Value="unumero.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UNumero"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="25"/>
+        <CursorPos X="15" Y="44"/>
+        <UsageCount Value="21"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="../../../../Programación Numerica 2015/Trabajos Prácticos/Trabajo Práctico 1/TP1/programa.pas"/>
+        <UnitName Value="programaErrores"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="280"/>
+        <CursorPos X="17" Y="289"/>
+        <UsageCount Value="10"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="../../../../Programación Numerica 2015/Trabajos Prácticos/Trabajo Practico 3/Polinomios/mainform.pas"/>
+        <UnitName Value="MainForm"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="127"/>
+        <CursorPos X="34" Y="121"/>
+        <UsageCount Value="10"/>
+        <Loaded Value="True"/>
+      </Unit4>
+    </Units>
+    <JumpHistory Count="20" HistoryIndex="19">
+      <Position1>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="35" Column="28" TopLine="19"/>
+      </Position1>
+      <Position2>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="36" Column="28" TopLine="19"/>
+      </Position2>
+      <Position3>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="35" Column="28" TopLine="19"/>
+      </Position3>
+      <Position4>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="37" Column="28"/>
+      </Position4>
+      <Position5>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="2" Column="17"/>
+      </Position5>
+      <Position6>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="17" Column="54"/>
+      </Position6>
+      <Position7>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="16" Column="45"/>
+      </Position7>
+      <Position8>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="26" Column="32" TopLine="106"/>
+      </Position8>
+      <Position9>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="37" Column="51" TopLine="18"/>
+      </Position9>
+      <Position10>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="180" Column="44" TopLine="161"/>
+      </Position10>
+      <Position11>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="222" Column="46" TopLine="249"/>
+      </Position11>
+      <Position12>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="29" Column="16" TopLine="10"/>
+      </Position12>
+      <Position13>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="28" TopLine="10"/>
+      </Position13>
+      <Position14>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="44" Column="14" TopLine="25"/>
+      </Position14>
+      <Position15>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="61" Column="47" TopLine="27"/>
+      </Position15>
+      <Position16>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="11" Column="10" TopLine="31"/>
+      </Position16>
+      <Position17>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="55" Column="5" TopLine="27"/>
+      </Position17>
+      <Position18>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="42" Column="10" TopLine="27"/>
+      </Position18>
+      <Position19>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="55" Column="14" TopLine="27"/>
+      </Position19>
+      <Position20>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="57" Column="14" TopLine="28"/>
+      </Position20>
+    </JumpHistory>
+  </ProjectSession>
+</CONFIG>
