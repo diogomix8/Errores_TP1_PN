@@ -1,0 +1,55 @@
+unit UFormMainErrores;
+
+{$mode objfpc}{$H+}
+
+interface
+
+uses
+  Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, Menus,
+  ExtCtrls, StdCtrls;
+
+type
+
+  { TErrores }
+
+  TErrores = class(TForm)
+    BarMenu: TMainMenu;
+    ComboBoxBase: TComboBox;
+    EditNumber: TEdit;
+    LabelPFN: TLabel;
+    LabelNotN: TLabel;
+    LabelShowNumberConvert: TLabel;
+    LabelShowBase: TLabel;
+    LabelBaseConvert: TLabel;
+    LabelOptionBaseConvert: TLabel;
+    LabelNumber: TLabel;
+    MenuArchive: TMenuItem;
+    MenuAbout: TMenuItem;
+    ItemArchiveConvert: TMenuItem;
+    ItemAbout: TMenuItem;
+    PanelShowNumber: TPanel;
+    PanelConvertNumber: TPanel;
+    procedure ItemArchiveConvertClick(Sender: TObject);
+  private
+    { private declarations }
+  public
+    { public declarations }
+  end;
+
+var
+  Errores: TErrores;
+
+implementation
+
+{$R *.lfm}
+
+{ TErrores }
+
+procedure TErrores.ItemArchiveConvertClick(Sender: TObject);
+begin
+    PanelConvertNumber.Visible:=true;
+    PanelShowNumber.Visible:=true;
+end;
+
+end.
+

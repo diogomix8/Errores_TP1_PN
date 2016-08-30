@@ -1,0 +1,139 @@
+object Errores: TErrores
+  Left = 1031
+  Height = 344
+  Top = 210
+  Width = 780
+  Caption = 'Errores'
+  ClientHeight = 323
+  ClientWidth = 780
+  Menu = BarMenu
+  LCLVersion = '1.6.0.4'
+  object PanelConvertNumber: TPanel
+    Left = 8
+    Height = 296
+    Top = 8
+    Width = 762
+    ClientHeight = 296
+    ClientWidth = 762
+    TabOrder = 0
+    Visible = False
+    object LabelNumber: TLabel
+      Left = 16
+      Height = 15
+      Top = 32
+      Width = 110
+      Caption = 'Ingrese un Número: '
+      ParentColor = False
+    end
+    object EditNumber: TEdit
+      Left = 152
+      Height = 27
+      Top = 24
+      Width = 496
+      TabOrder = 0
+    end
+    object LabelOptionBaseConvert: TLabel
+      Left = 16
+      Height = 15
+      Top = 71
+      Width = 108
+      Caption = 'Elija la Base destino: '
+      ParentColor = False
+    end
+    object ComboBoxBase: TComboBox
+      Left = 152
+      Height = 27
+      Top = 64
+      Width = 100
+      ItemHeight = 0
+      Items.Strings = (
+        '2'
+        '3'
+        '4'
+        '5'
+        '6'
+        '7'
+        '8'
+        '9'
+        '10'
+        '11'
+        '12'
+        '13'
+        '14'
+        '15'
+        '16'
+      )
+      TabOrder = 1
+    end
+    object PanelShowNumber: TPanel
+      Left = 18
+      Height = 153
+      Top = 116
+      Width = 628
+      BorderStyle = bsSingle
+      ClientHeight = 151
+      ClientWidth = 626
+      ParentBidiMode = False
+      ParentColor = False
+      TabOrder = 2
+      Visible = False
+      object LabelBaseConvert: TLabel
+        Left = 16
+        Height = 15
+        Top = 24
+        Width = 91
+        Caption = 'Número en base '
+        ParentColor = False
+      end
+      object LabelShowBase: TLabel
+        Left = 112
+        Height = 15
+        Top = 24
+        Width = 27
+        Caption = '"") = '
+        ParentColor = False
+      end
+      object LabelShowNumberConvert: TLabel
+        Left = 145
+        Height = 15
+        Top = 24
+        Width = 235
+        Caption = '"aqui va el numero convertido en la base B''"'
+        ParentColor = False
+      end
+      object LabelPFN: TLabel
+        Left = 16
+        Height = 15
+        Top = 64
+        Width = 48
+        Caption = 'P. F. N. = '
+        ParentColor = False
+      end
+      object LabelNotN: TLabel
+        Left = 16
+        Height = 15
+        Top = 104
+        Width = 84
+        Caption = 'Sin Normaliza ='
+        ParentColor = False
+      end
+    end
+  end
+  object BarMenu: TMainMenu
+    left = 720
+    top = 8
+    object MenuArchive: TMenuItem
+      Caption = 'Arhivo'
+      object ItemArchiveConvert: TMenuItem
+        Caption = 'Convertir un Número de Base B a una Base B'''
+        OnClick = ItemArchiveConvertClick
+      end
+    end
+    object MenuAbout: TMenuItem
+      Caption = 'Ayuda'
+      object ItemAbout: TMenuItem
+        Caption = 'Sobre de'
+      end
+    end
+  end
+end
