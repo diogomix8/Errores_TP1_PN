@@ -40,7 +40,7 @@
       <Unit1>
         <Filename Value="uformmainerrores.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Errores"/>
+        <ComponentName Value="FormMainErroes"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UFormMainErrores"/>

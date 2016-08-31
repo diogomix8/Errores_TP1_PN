@@ -1,151 +1,223 @@
-object Errores: TErrores
-  Left = 862
-  Height = 344
-  Top = 230
-  Width = 780
+object FormMainErroes: TFormMainErroes
+  Left = 1148
+  Height = 561
+  Top = 121
+  Width = 692
   Caption = 'Errores'
-  ClientHeight = 324
-  ClientWidth = 780
-  Menu = BarMenu
+  ClientHeight = 561
+  ClientWidth = 692
   LCLVersion = '1.6.0.4'
-  object PanelConvertNumber: TPanel
-    Left = 8
-    Height = 304
-    Top = 8
-    Width = 762
-    ClientHeight = 304
-    ClientWidth = 762
+  object LabelEnterNumber: TLabel
+    Left = 24
+    Height = 15
+    Top = 25
+    Width = 111
+    Caption = 'Ingrese un Número : '
+    ParentColor = False
+  end
+  object EditNumber: TEdit
+    Left = 160
+    Height = 23
+    Top = 24
+    Width = 384
     TabOrder = 0
-    Visible = False
-    object LabelNumber: TLabel
-      Left = 16
+  end
+  object LabelBaseConvert: TLabel
+    Left = 24
+    Height = 15
+    Top = 72
+    Width = 129
+    Caption = 'Elija la Base de Llegada : '
+    ParentColor = False
+  end
+  object ComboBoxBase: TComboBox
+    Left = 160
+    Height = 23
+    Top = 64
+    Width = 100
+    ItemHeight = 15
+    Items.Strings = (
+      '2'
+      '3'
+      '4'
+      '5'
+      '6'
+      '7'
+      '8'
+      '9'
+      '10'
+      '11'
+      '12'
+      '13'
+      '14'
+      '15'
+      '16'
+    )
+    OnChange = ComboBoxBaseChange
+    TabOrder = 1
+  end
+  object ButtonConvert: TButton
+    Left = 232
+    Height = 25
+    Top = 120
+    Width = 75
+    Caption = 'Convertir'
+    OnClick = ButtonConvertClick
+    TabOrder = 2
+  end
+  object ButtonClean: TButton
+    Left = 352
+    Height = 25
+    Top = 120
+    Width = 75
+    Caption = 'Limpiar'
+    TabOrder = 3
+  end
+  object PanelNumberConvert: TPanel
+    Left = 16
+    Height = 146
+    Top = 166
+    Width = 659
+    BorderStyle = bsSingle
+    ClientHeight = 142
+    ClientWidth = 655
+    TabOrder = 4
+    object LabelShowNumber: TLabel
+      Left = 8
       Height = 15
-      Top = 32
-      Width = 108
-      Caption = 'Ingrese un Número: '
+      Top = 40
+      Width = 90
+      Caption = 'Número en Base '
       ParentColor = False
     end
-    object EditNumber: TEdit
-      Left = 152
-      Height = 23
-      Top = 24
-      Width = 496
-      TabOrder = 0
-    end
-    object LabelOptionBaseConvert: TLabel
-      Left = 16
-      Height = 15
-      Top = 71
-      Width = 108
-      Caption = 'Elija la Base destino: '
+    object LabelShowBase: TLabel
+      Left = 104
+      Height = 1
+      Top = 40
+      Width = 1
       ParentColor = False
     end
-    object ComboBoxBase: TComboBox
-      Left = 152
-      Height = 23
-      Top = 64
-      Width = 100
-      ItemHeight = 15
-      Items.Strings = (
-        '2'
-        '3'
-        '4'
-        '5'
-        '6'
-        '7'
-        '8'
-        '9'
-        '10'
-        '11'
-        '12'
-        '13'
-        '14'
-        '15'
-        '16'
-      )
-      TabOrder = 1
+    object LabelNumberConvert: TLabel
+      Left = 136
+      Height = 1
+      Top = 40
+      Width = 1
+      ParentColor = False
     end
-    object PanelShowNumber: TPanel
-      Left = 16
-      Height = 153
+    object LabelPFN: TLabel
+      Left = 8
+      Height = 15
+      Top = 72
+      Width = 51
+      Caption = 'P. F. N. = '
+      ParentColor = False
+    end
+    object LabelShowPFN: TLabel
+      Left = 80
+      Height = 1
+      Top = 72
+      Width = 1
+      ParentColor = False
+    end
+    object LabelNormalized: TLabel
+      Left = 8
+      Height = 15
       Top = 104
-      Width = 628
-      BorderStyle = bsSingle
-      ClientHeight = 149
-      ClientWidth = 624
-      ParentBidiMode = False
+      Width = 91
+      Caption = 'Sin Normalizar = '
       ParentColor = False
-      TabOrder = 2
-      Visible = False
-      object LabelBaseConvert: TLabel
-        Left = 16
-        Height = 15
-        Top = 24
-        Width = 90
-        Caption = 'Número en base '
-        ParentColor = False
-      end
-      object LabelShowBase: TLabel
-        Left = 112
-        Height = 15
-        Top = 24
-        Width = 28
-        Caption = '"") = '
-        ParentColor = False
-      end
-      object LabelShowNumberConvert: TLabel
-        Left = 145
-        Height = 15
-        Top = 24
-        Width = 233
-        Caption = '"aqui va el numero convertido en la base B''"'
-        ParentColor = False
-      end
-      object LabelPFN: TLabel
-        Left = 16
-        Height = 15
-        Top = 64
-        Width = 54
-        Caption = 'P. F. N.  = '
-        ParentColor = False
-      end
-      object LabelNotN: TLabel
-        Left = 16
-        Height = 15
-        Top = 104
-        Width = 88
-        Caption = 'Sin Normalizar ='
-        ParentColor = False
-      end
     end
-    object ButtonConvert: TButton
-      Left = 224
-      Height = 25
-      Top = 264
-      Width = 75
-      Caption = 'Convertir'
-      OnClick = ButtonConvertClick
-      TabOrder = 3
+    object LabelShowNormalized: TLabel
+      Left = 109
+      Height = 1
+      Top = 104
+      Width = 1
+      ParentColor = False
+    end
+    object LabelTitleNumber: TLabel
+      Left = 8
+      Height = 18
+      Top = 13
+      Width = 207
+      Caption = 'CONVERSIÓN DEL NÚMERO'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold, fsUnderline]
+      ParentColor = False
+      ParentFont = False
     end
   end
-  object BarMenu: TMainMenu
-    left = 720
-    top = 8
-    object MenuArchive: TMenuItem
-      Caption = 'Arhivo'
-      object ItemArchiveConvert: TMenuItem
-        Caption = 'Convertir un Número de Base B a una Base B'''
-        OnClick = ItemArchiveConvertClick
-      end
-      object ItemArchiveRepresnt: TMenuItem
-        Caption = 'Mostrar en Formatos de Representación'
-      end
+  object PanelShowRepresents: TPanel
+    Left = 16
+    Height = 148
+    Top = 325
+    Width = 658
+    BorderStyle = bsSingle
+    ClientHeight = 144
+    ClientWidth = 654
+    TabOrder = 5
+    object LabelDigit: TLabel
+      Left = 8
+      Height = 15
+      Top = 48
+      Width = 252
+      Caption = 'Ingrese la cantidad de digitos "t" de presición = '
+      ParentColor = False
     end
-    object MenuAbout: TMenuItem
-      Caption = 'Ayuda'
-      object ItemAbout: TMenuItem
-        Caption = 'Sobre de'
-      end
+    object EditTDigit: TEdit
+      Left = 264
+      Height = 23
+      Top = 40
+      Width = 80
+      TabOrder = 0
+    end
+    object LabelTitleFormat: TLabel
+      Left = 8
+      Height = 18
+      Top = 8
+      Width = 253
+      Caption = 'FORMATOS DE REPRESENTACIÓN'
+      Font.CharSet = ANSI_CHARSET
+      Font.Height = -15
+      Font.Name = 'Arial'
+      Font.Pitch = fpVariable
+      Font.Quality = fqDraft
+      Font.Style = [fsBold, fsUnderline]
+      ParentColor = False
+      ParentFont = False
+    end
+    object LabelCut: TLabel
+      Left = 8
+      Height = 15
+      Top = 80
+      Width = 72
+      Caption = '- Por Corte = '
+      ParentColor = False
+    end
+    object LabelCutS: TLabel
+      Left = 8
+      Height = 15
+      Top = 111
+      Width = 125
+      Caption = '- Por Corte Simetrico = '
+      ParentColor = False
+    end
+    object LabelShowNumberCut: TLabel
+      Left = 88
+      Height = 1
+      Top = 80
+      Width = 1
+      ParentColor = False
+    end
+    object LabelShowNumberCutS: TLabel
+      Left = 141
+      Height = 1
+      Top = 111
+      Width = 1
+      ParentColor = False
     end
   end
 end

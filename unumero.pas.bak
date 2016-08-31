@@ -8,14 +8,14 @@
     Classes, SysUtils;
 
   type
-      ClsNumero = class
+      TNumero = class
         numero : double;
         base : byte;
         constructor create();
         function corte(n:string; t:byte):string;
-        function cortesimetrico(n:string;t,b:byte):string;
+        function corteSimetrico(n:string;t,b:byte):string;
         function conversion(b:byte; n:integer):string;
-        function mult_reiterada(n:real; b:byte):string;
+        function multReiterada(n:real; b:byte):string;
         function normalizar(pe,pd:string; b:byte):string;
       end;
 
@@ -23,12 +23,12 @@
 
   implementation
 
-  constructor ClsNumero.create();
+  constructor TNumero.create();
   begin
 
   end;
 
-  function ClsNumero.corte(n:string; t:byte):string;
+  function TNumero.corte(n:string; t:byte):string;
        var
             p:byte;
             cad:string;
@@ -39,7 +39,7 @@
             result:=n+cad;
        end;
 
-  function ClsNumero.cortesimetrico(n:string;t,b:byte):string;
+  function TNumero.corteSimetrico(n:string;t,b:byte):string;
        var
            ac,a,digito,d:integer;
            c:char;
@@ -182,7 +182,7 @@
                  result:=corte(n,t);
                end;
        end;
-  function ClsNumero.conversion(b:byte; n:integer):string;
+  function TNumero.conversion(b:byte; n:integer):string;
     var
           resto2:string;
           resto:integer;
@@ -224,7 +224,7 @@
          result:=resto2+result;
     end;
 
-  function ClsNumero.mult_reiterada(n:real; b:byte):string;
+  function TNumero.multReiterada(n:real; b:byte):string;
     var
          pent:string;
          partent,iter:byte;
@@ -255,7 +255,7 @@
           end;
     end;
 
-  function ClsNumero.normalizar(pe,pd:string; b:byte):string;
+  function TNumero.normalizar(pe,pd:string; b:byte):string;
     var
          norm,base2,ex:string;
          j,i,cd,k:byte;

@@ -13,9 +13,9 @@
         base : byte;
         constructor create();
         function corte(n:string; t:byte):string;
-        function cortesimetrico(n:string;t,b:byte):string;
+        function corteSimetrico(n:string;t,b:byte):string;
         function conversion(b:byte; n:integer):string;
-        function mult_reiterada(n:real; b:byte):string;
+        function multReiterada(n:real; b:byte):string;
         function normalizar(pe,pd:string; b:byte):string;
       end;
 
@@ -39,7 +39,7 @@
             result:=n+cad;
        end;
 
-  function TNumero.cortesimetrico(n:string;t,b:byte):string;
+  function TNumero.corteSimetrico(n:string;t,b:byte):string;
        var
            ac,a,digito,d:integer;
            c:char;
@@ -191,7 +191,7 @@
          result:='';
          while (n>=b)do
            begin
-              resto:= n mod b;
+              resto:= (n mod b);
               n:=n div b;
               if resto in [10..16] then
                  begin
@@ -224,7 +224,7 @@
          result:=resto2+result;
     end;
 
-  function TNumero.mult_reiterada(n:real; b:byte):string;
+  function TNumero.multReiterada(n:real; b:byte):string;
     var
          pent:string;
          partent,iter:byte;
