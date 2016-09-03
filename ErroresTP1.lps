@@ -3,13 +3,13 @@
   <ProjectSession>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="16">
+    <Units Count="19">
       <Unit0>
         <Filename Value="ErroresTP1.lpr"/>
         <IsPartOfProject Value="True"/>
+        <EditorIndex Value="-1"/>
         <CursorPos X="39" Y="3"/>
-        <UsageCount Value="29"/>
-        <Loaded Value="True"/>
+        <UsageCount Value="112"/>
       </Unit0>
       <Unit1>
         <Filename Value="uformmainerrores.pas"/>
@@ -19,10 +19,9 @@
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UFormMainErrores"/>
         <IsVisibleTab Value="True"/>
-        <EditorIndex Value="1"/>
-        <TopLine Value="61"/>
-        <CursorPos X="27" Y="95"/>
-        <UsageCount Value="26"/>
+        <TopLine Value="89"/>
+        <CursorPos X="79" Y="102"/>
+        <UsageCount Value="109"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
@@ -30,170 +29,233 @@
         <Filename Value="unumero.pas"/>
         <IsPartOfProject Value="True"/>
         <UnitName Value="UNumero"/>
-        <EditorIndex Value="3"/>
-        <TopLine Value="256"/>
-        <CursorPos X="30" Y="194"/>
-        <UsageCount Value="28"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="17"/>
+        <CursorPos X="56" Y="33"/>
+        <UsageCount Value="111"/>
         <Loaded Value="True"/>
       </Unit2>
       <Unit3>
         <Filename Value="../../../../Programación Numerica 2015/Trabajos Prácticos/Trabajo Práctico 1/TP1/programa.pas"/>
         <UnitName Value="programaErrores"/>
-        <EditorIndex Value="4"/>
-        <TopLine Value="288"/>
-        <CursorPos X="48" Y="337"/>
-        <UsageCount Value="11"/>
-        <Loaded Value="True"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="289"/>
+        <CursorPos X="25" Y="304"/>
+        <UsageCount Value="52"/>
       </Unit3>
       <Unit4>
         <Filename Value="../../../../Programación Numerica 2015/Trabajos Prácticos/Trabajo Practico 3/Polinomios/mainform.pas"/>
         <UnitName Value="MainForm"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="125"/>
-        <CursorPos X="34" Y="121"/>
-        <UsageCount Value="12"/>
+        <TopLine Value="14"/>
+        <CursorPos X="41" Y="148"/>
+        <UsageCount Value="7"/>
       </Unit4>
       <Unit5>
         <Filename Value="../../../../Programación Numerica 2015/Trabajos Prácticos/Trabajo Práctico 1/SumaPonderada.pas"/>
-        <EditorIndex Value="-1"/>
-        <CursorPos X="71" Y="26"/>
-        <UsageCount Value="10"/>
+        <EditorIndex Value="2"/>
+        <TopLine Value="4"/>
+        <CursorPos X="37" Y="10"/>
+        <UsageCount Value="50"/>
+        <Loaded Value="True"/>
       </Unit5>
       <Unit6>
         <Filename Value="C:/lazarus/fpc/3.0.0/source/rtl/inc/systemh.inc"/>
         <EditorIndex Value="-1"/>
         <TopLine Value="99"/>
-        <CursorPos X="9" Y="117"/>
-        <UsageCount Value="10"/>
+        <CursorPos X="3" Y="117"/>
+        <UsageCount Value="1"/>
       </Unit6>
       <Unit7>
         <Filename Value="C:/lazarus/fpc/3.0.0/source/rtl/inc/genmath.inc"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="1"/>
       </Unit7>
       <Unit8>
         <Filename Value="C:/lazarus/fpc/3.0.0/source/rtl/win/sysdir.inc"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="1"/>
       </Unit8>
       <Unit9>
         <Filename Value="C:/lazarus/fpc/3.0.0/source/rtl/inc/threadh.inc"/>
         <EditorIndex Value="-1"/>
         <WindowIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="1"/>
       </Unit9>
       <Unit10>
         <Filename Value="C:/lazarus/fpc/3.0.0/source/rtl/inc/flt_conv.inc"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="1"/>
       </Unit10>
       <Unit11>
         <Filename Value="C:/lazarus/fpc/3.0.0/source/rtl/inc/variant.inc"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="1"/>
       </Unit11>
       <Unit12>
         <Filename Value="C:/lazarus/fpc/3.0.0/source/rtl/inc/varianth.inc"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="1"/>
       </Unit12>
       <Unit13>
         <Filename Value="C:/lazarus/fpc/3.0.0/source/rtl/inc/text.inc"/>
         <EditorIndex Value="-1"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="1"/>
       </Unit13>
       <Unit14>
-        <Filename Value="C:/lazarus/fpc/3.0.0/source/rtl/inc/systemh.inc"/>
+        <Filename Value="uformmainerrores.lfm"/>
         <EditorIndex Value="-1"/>
-        <TopLine Value="99"/>
-        <CursorPos X="3" Y="117"/>
-        <UsageCount Value="10"/>
+        <UsageCount Value="12"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
       </Unit14>
       <Unit15>
-        <Filename Value="uformmainerrores.lfm"/>
-        <EditorIndex Value="2"/>
-        <UsageCount Value="10"/>
-        <Loaded Value="True"/>
-        <DefaultSyntaxHighlighter Value="LFM"/>
+        <Filename Value="C:/Users/Diego Fabian Palacio/Desktop/SumaPonderada.lpi"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="19"/>
+        <UsageCount Value="1"/>
+        <DefaultSyntaxHighlighter Value="XML"/>
       </Unit15>
+      <Unit16>
+        <Filename Value="C:/Users/Diego Fabian Palacio/Desktop/SumaPonderada.lpr"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="45" Y="27"/>
+        <UsageCount Value="11"/>
+      </Unit16>
+      <Unit17>
+        <Filename Value="../../../../Programación Numerica 2015/Trabajos Prácticos/Trabajo Practico 3/Polinomios/Polinomios.lpr"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="7"/>
+      </Unit17>
+      <Unit18>
+        <Filename Value="../../../../Programación Numerica 2015/Trabajos Prácticos/Trabajo Practico 3/Polinomios/upolinomios.pas"/>
+        <UnitName Value="UPolinomios"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="106"/>
+        <CursorPos X="29" Y="21"/>
+        <UsageCount Value="7"/>
+      </Unit18>
     </Units>
-    <JumpHistory Count="19" HistoryIndex="18">
+    <JumpHistory Count="30" HistoryIndex="29">
       <Position1>
-        <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="91" Column="31" TopLine="65"/>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="37" Column="49"/>
       </Position1>
       <Position2>
-        <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="112" Column="18" TopLine="76"/>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="282" Column="35" TopLine="261"/>
       </Position2>
       <Position3>
         <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="79" Column="65" TopLine="62"/>
+        <Caret Line="95" Column="34" TopLine="86"/>
       </Position3>
       <Position4>
         <Filename Value="unumero.pas"/>
-        <Caret Line="187" Column="31" TopLine="172"/>
+        <Caret Line="321" Column="15" TopLine="307"/>
       </Position4>
       <Position5>
         <Filename Value="unumero.pas"/>
-        <Caret Line="17" Column="43"/>
+        <Caret Line="311" Column="71" TopLine="236"/>
       </Position5>
       <Position6>
         <Filename Value="unumero.pas"/>
-        <Caret Line="194" Column="25" TopLine="176"/>
+        <Caret Line="399" Column="24" TopLine="359"/>
       </Position6>
       <Position7>
         <Filename Value="unumero.pas"/>
-        <Caret Line="17" Column="56" TopLine="5"/>
+        <Caret Line="33" Column="51" TopLine="17"/>
       </Position7>
       <Position8>
         <Filename Value="unumero.pas"/>
-        <Caret Line="227" Column="37" TopLine="209"/>
+        <Caret Line="352" Column="81" TopLine="340"/>
       </Position8>
       <Position9>
         <Filename Value="unumero.pas"/>
-        <Caret Line="44" Column="15" TopLine="26"/>
+        <Caret Line="356" Column="79" TopLine="339"/>
       </Position9>
       <Position10>
-        <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="52" Column="130" TopLine="36"/>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="315" Column="17" TopLine="298"/>
       </Position10>
       <Position11>
-        <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="79" Column="65" TopLine="62"/>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="362" Column="68" TopLine="339"/>
       </Position11>
       <Position12>
-        <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="51" Column="46" TopLine="51"/>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="353" Column="26" TopLine="352"/>
       </Position12>
       <Position13>
-        <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="80" Column="65" TopLine="63"/>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="363" Column="62" TopLine="346"/>
       </Position13>
       <Position14>
-        <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="53" Column="17" TopLine="43"/>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="366" Column="65" TopLine="340"/>
       </Position14>
       <Position15>
-        <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="51" Column="39" TopLine="40"/>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="396" Column="30" TopLine="381"/>
       </Position15>
       <Position16>
-        <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="85" Column="8" TopLine="68"/>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="69" Column="48" TopLine="55"/>
       </Position16>
       <Position17>
-        <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="91" Column="42" TopLine="59"/>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="63" Column="43" TopLine="47"/>
       </Position17>
       <Position18>
         <Filename Value="uformmainerrores.pas"/>
-        <Caret Line="85" Column="18" TopLine="68"/>
+        <Caret Line="97" Column="46" TopLine="86"/>
       </Position18>
       <Position19>
-        <Filename Value="../../../../Programación Numerica 2015/Trabajos Prácticos/Trabajo Práctico 1/TP1/programa.pas"/>
-        <Caret Line="304" Column="23" TopLine="276"/>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="71" Column="24" TopLine="59"/>
       </Position19>
+      <Position20>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="93" Column="58" TopLine="81"/>
+      </Position20>
+      <Position21>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="94" Column="58" TopLine="82"/>
+      </Position21>
+      <Position22>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="97" Column="51" TopLine="86"/>
+      </Position22>
+      <Position23>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="99" Column="64" TopLine="87"/>
+      </Position23>
+      <Position24>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="101" Column="76" TopLine="83"/>
+      </Position24>
+      <Position25>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="100" Column="76" TopLine="82"/>
+      </Position25>
+      <Position26>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="99" Column="76" TopLine="81"/>
+      </Position26>
+      <Position27>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="98" Column="76" TopLine="80"/>
+      </Position27>
+      <Position28>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="123" Column="18" TopLine="116"/>
+      </Position28>
+      <Position29>
+        <Filename Value="unumero.pas"/>
+        <Caret Line="33" Column="11" TopLine="18"/>
+      </Position29>
+      <Position30>
+        <Filename Value="uformmainerrores.pas"/>
+        <Caret Line="115" Column="42" TopLine="98"/>
+      </Position30>
     </JumpHistory>
   </ProjectSession>
 </CONFIG>
