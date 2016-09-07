@@ -10,36 +10,36 @@
   type
       { TNumero }
       TNumero = class
-        numero : double; { Numero con parte fraccionaria }
+        numero : string; { Numero con parte fraccionaria }
         base : byte;     { Base del numero }
         tMantiza : byte; { Mantiza }
-
         private
            function expo(a,b:integer):longint;
-
         public
           { El Constructor crea un Nuevo Objeto del TNumero que contiene:
           n : El numero
           b : La base de Partida
           t : Cantidad de Digitos de Precision }
-          constructor create(n:double; b:byte; t:byte);
+          constructor create(n:string; b:byte; t:byte);
 
+          function calcularPEntera():string;
+          function calcularPDecimal():string;
           function corte(n:string; t:byte):string;
+          function expo(a,b:integer): longint;
+          function sumaPonderada(num:string;b:byte):double;
           function corteSimetrico(n:string;t,b:byte):string;
-          function divisionReiterada(b:byte; n:integer):string;
-          function multReiterada(baseLlegada:byte;numeroEntrada:double):string;
-          function cambioBaseFraccion(basePartida,baseLlegada:byte;numeroEntrada:double):string;
-          function fraccionADecimal(basePartida:byte;numeroEntrada:double):string
+          function divisionReiterada(b:byte; n:string):string;
+          function multReiterada(baseLlegada:byte;numeroEntrada:string):string;
+          function cambioBaseFraccion(basePartida,baseLlegada:byte;numeroEntrada:string):string;
+          function fraccionADecimal(basePartida:byte;numeroEntrada:string):string;
           function normalizar(pe,pd:string; b:byte):string;
-
           {Setters y Getters}
-          procedure setNumero(newN:double);
-          function getNumero():double;
+          procedure setNumero(newN:string);
+          function getNumero():string;
           procedure setBase(newBase:byte);
           function getBase():byte;
           procedure setTMantiza(newT:byte);
           function getTMantiza():byte;
-
           { Destructor }
           destructor destroyObject();
       end;
@@ -48,11 +48,43 @@
 
   implementation
 
-  constructor TNumero.create(n:double; b:byte; t:byte);
+  constructor TNumero.create(n:string; b:byte; t:byte);
   begin
        numero:=n;
        base:=b;
        tMantiza:=t;
+  end;
+
+  function TNumero.calcularPEntera():string;
+  var
+      parteEntera:string;
+      i:byte;
+  begin
+       i:=1;
+       while ((getNumero()[i])<>'.') do
+       begin
+          insert(getNumero()[i],parteEntera,length(parteEntera)+1);
+          i:=i+1;
+       end;
+       result:= parteEntera;
+  end;
+
+  function TNumero.calcularPDecimal():string;  //devolvera un string de la forma 0.numero //asi lo necesito para la convercion de la aprte decimal
+  var
+      parteDecimal:string;
+      i,j:byte;
+  begin
+      i:=1;
+      while (getNumero[i]<>'.') and (i<=length(getNumero)) do i:=i+1;
+      if i<>length(getNumero) then
+      begin
+           i:=i+1;
+           parteDecimal:='0.';
+           for j:=i to length(getNumero) do
+            insert(numero[j],parteDecimal,length(parteDecimal)+1);
+      end
+      else parteDecimal:='0.0';
+      result:= parteDecimal;
   end;
 
   function TNumero.corte(n:string; t:byte):string;
@@ -66,7 +98,7 @@
             result:=n+cad;
        end;
 
-  function TNumero.expo(a,b:integer):longint;
+  function TNumero.expo(a,b:integer): longint;
   var
     i: integer;
   begin
@@ -79,6 +111,54 @@
  	  a:=1;
   expo:= a;
   end;
+  function TNumero.sumaPonderada(num:string;b:byte):double;
+  var
+    i,p,nume,c,j: byte;
+    nue,nue2:real;
+
+  begin
+    p:=pos('.',num);
+    i:= length(num)-p;
+    nue:=0;
+    nue2:=0;
+
+    for j:= 1 to i do
+      	  begin
+              if num[j] in ['A'..'F'] then
+              case num[j] of
+                  'A': nue:= nue + (10 * expo(b,-i));
+                  'B': nue:= nue + (11 * expo(b,-i));
+                  'C': nue:= nue + (12 * expo(b,-i));
+                  'D': nue:= nue + (13 * expo(b,-i));
+                  'E': nue:= nue + (14 * expo(b,-i));
+                  'F': nue:= nue + (15 * expo(b,-i));
+              end
+              else
+              begin
+                  val(num[j],nume,c);
+                  nue:= nue + nume * expo(b,-i);
+              end;
+      	  end;
+     for j:= 1 to p-1 do
+      	  begin
+      	      if num[j] in ['A'..'F'] then
+      	      case num[j] of
+      	          'A': nue2:= nue2 + (10 * expo(b,(p-1)-i));
+      	          'B': nue2:= nue2 + (11 * expo(b,(p-1)-i));
+      	          'C': nue2:= nue2 + (12 * expo(b,(p-1)-i));
+      	          'D': nue2:= nue2 + (13 * expo(b,(p-1)-i));
+      	          'E': nue2:= nue2 + (14 * expo(b,(p-1)-i));
+      	          'F': nue2:= nue2 + (15 * expo(b,(p-1)-i));
+      	      end
+      	      else
+      	      begin
+      	          val(num[j],nume,c);
+      	          nue2:= nue2 + nume * expo(b,(p-1)-i);
+      	      end;
+      	  end;
+	  sumaPonderada:= (nue2 + nue);
+  end;
+
 
   function TNumero.corteSimetrico(n:string;t,b:byte):string;
        var
@@ -223,17 +303,18 @@
                  result:=corte(n,t);
                end;
        end;
-  function TNumero.divisionReiterada(b:byte; n:integer):string;
+  function TNumero.divisionReiterada(b:byte; n:string):string;
     var
           resto2:string;
-          resto:integer;
-
+          resto, iNum:integer;
+          e:byte;
     begin
+         Val(n,iNum,e);
          result:='';
-         while (n>=b)do
+         while (iNum>=b)do
            begin
-              resto:= (n mod b);
-              n:=n div b;
+              resto:= (iNum mod b);
+              iNum:=iNum div b;
               if resto in [10..16] then
                  begin
                      case resto of
@@ -249,9 +330,9 @@
                  str(resto,resto2);
               result:=resto2+result;
            end;
-           if n in [10..16] then
+           if iNum in [10..16] then
               begin
-                case n of
+                case iNum of
                    10: resto2:='A';
                    11: resto2:='B';
                    12: resto2:='C';
@@ -261,11 +342,11 @@
                 end;
               end
            else
-              str(n,resto2);
+              str(iNum,resto2);
          result:=resto2+result;
     end;
 
-  function TNumero.multReiterada(baseLlegada:byte;numeroEntrada:double):string; //el decimal a convertir debe de ser de tipo 0.*numeros*
+  function TNumero.multReiterada(baseLlegada:byte;numeroEntrada:string):string; //el decimal a convertir debe de ser de tipo 0.*numeros*
   var
   i,parteEntera,error:integer;
   iter:double;
@@ -274,8 +355,8 @@
   begin
     i:=1;
     { Convertimos en tipo numerico el numero pasado por string }
-    //val(numeroEntrada,iter,error);
-    iter := numeroEntrada;
+    val(numeroEntrada,iter,error);
+    //iter := numeroEntrada;
     b:=true;
     while (i<10) and (b) do   //el 10 es cuantos digitos despues de la coma vamos a tomar
        begin
@@ -303,10 +384,9 @@
     result := numeroSalida;
   end;
 
-  function TNumero.cambioBaseFraccion(basePartida,baseLlegada:byte;numeroEntrada:double):string;
+  function TNumero.cambioBaseFraccion(basePartida,baseLlegada:byte;numeroEntrada:string):string;
   var
   sIntermedio, sNumSalida: string;
-  dIntermedio : double;
   e : byte;
   begin
      if basePartida=10 then sNumSalida := multReiterada(baseLLegada,numeroEntrada)
@@ -316,49 +396,66 @@
        else
        begin
            sIntermedio := fraccionADecimal(basePartida,numeroEntrada);
-           Val(sIntermedio,dIntermedio,e);
-           sNumSalida := multReiterada(baseLLegada,dIntermedio);
+           insert('0.',sIntermedio,1);
+           sNumSalida := multReiterada(baseLLegada,sIntermedio);
        end;
      end;
      result := sNumSalida;
   end;
 
-  function TNumero.fraccionADecimal(basePartida:byte;numeroEntrada:double):string;
+  function TNumero.fraccionADecimal(basePartida:byte;numeroEntrada:string):string;
   var
   i,j,num,error:byte;
   aDecimal:double;
-  sNumSalida,sNumEntrada:string;
+  //sNumSalida,sNumEntrada:string;
+  sNumSalida:string;
+  parteEntera:integer;
+  bandera:boolean;
   begin
-    Str(numeroEntrada,sNumEntrada);
+    //Str(numeroEntrada,sNumEntrada);
     aDecimal:=0;
     j:=1;
-    for i:=3 to length(sNumEntrada) do
+    for i:=3 to length(numeroEntrada) do
        begin
-          if sNumEntrada[i]='A' then num:=10
+          if numeroEntrada[i]='A' then num:=10
           else
           begin
-          if sNumEntrada[i]='B' then num:=11
-           else
-           begin
-           if sNumEntrada[i]='C' then num:=12
-           else
-           if sNumEntrada[i]='D' then num:=13
-            else
-            if sNumEntrada[i]='E' then num:=14
-             else
-             if sNumEntrada[i]='F' then num:=15
+              if numeroEntrada[i]='B' then num:=11
               else
-              val(sNumEntrada[i],num,error);
-           end;
-          end;
-         aDecimal:=aDecimal+num*1/(basePartida)*j;
+              begin
+                  if numeroEntrada[i]='C' then num:=12
+                  else
+                  if numeroEntrada[i]='D' then num:=13
+                  else
+                  if numeroEntrada[i]='E' then num:=14
+                  else
+                  if numeroEntrada[i]='F' then num:=15
+                  else
+                  val(numeroEntrada[i],num,error);
+              end;
+         end;
+         aDecimal:=aDecimal+num*1/(basePartida)**j;
          j:=j+1;
        end;
-   str(aDecimal,sNumSalida);
+    j:=1;
+    bandera:=false;
+    while (j<=7) and (bandera=false) do
+       begin
+         if aDecimal=0 then
+         begin
+           bandera:=true;
+         end
+         else
+         begin
+           aDecimal:=aDecimal*10;
+           parteEntera:=trunc(aDecimal);
+           insert(IntToStr(parteEntera),sNumSalida,length(sNumSalida)+1);
+           aDecimal:=aDecimal-parteEntera;
+         end;
+       j:=j+1;
+       end;
    result := sNumSalida;
-end;
-
-
+  end;
 
   function TNumero.normalizar(pe,pd:string; b:byte):string;
     var
@@ -370,11 +467,11 @@ end;
            begin
             lengthNumero:= length(pe);
             str(lengthNumero,exp);
-            sNormalizado:= '0.'+pe+pd+'x'+sBase+'^'+exp;
+            sNormalizado:= '0,'+pe+pd+'x'+sBase+'^'+exp;
            end
          else
             if pd[1]<>'0' then
-               sNormalizado:='0.'+pd+'x'+sBase+'^'+'0'
+               sNormalizado:='0,'+pd+'x'+sBase+'^'+'0'
             else
               begin
                i:=1;
@@ -388,39 +485,39 @@ end;
                  end;
                i:=k-1;
                str(i,exp);
-               sNormalizado:='0.'+pd+'x'+sBase+'^'+'-'+exp;
+               sNormalizado:='0,'+pd+'x'+sBase+'^'+'-'+exp;
               end;
            result:= sNormalizado;
     end;
 
-  procedure TNumero.setNumero(newN:double);
+  procedure TNumero.setNumero(newN:string);
   begin
-       numero := newN;
+    numero := newN;
   end;
 
-  function TNumero.getNumero():double;
+  function TNumero.getNumero():string;
   begin
-       result := numero;
+    result := numero;
   end;
 
   procedure TNumero.setBase(newBase:byte);
   begin
-       base := newBase;
+    base := newBase;
   end;
 
   function TNumero.getBase():byte;
   begin
-       result := base;
+    result := base;
   end;
 
   procedure TNumero.setTMantiza(newT:byte);
   begin
-       tMantiza := newT;
+    tMantiza := newT;
   end;
 
   function TNumero.getTMantiza():byte;
   begin
-       result := tMantiza;
+    result := tMantiza;
   end;
 
   { Liberamos la Memoria }

@@ -1,11 +1,12 @@
 object FormMainErroes: TFormMainErroes
-  Left = 381
+  Left = 1035
   Height = 435
-  Top = 163
+  Top = 154
   Width = 855
   Caption = 'Errores'
   ClientHeight = 435
   ClientWidth = 855
+  OnClose = CloseMain
   LCLVersion = '1.6.0.4'
   object LabelEnterNumber: TLabel
     Left = 24
