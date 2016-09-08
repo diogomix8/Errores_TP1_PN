@@ -58,6 +58,8 @@ var
   sNumeroNormalizado : string;
   sCorteSimetrico, sCorte, cadAux : string;
   bBaseArrival, bBaseDeparture, bMantiza, e, t : byte;  {Base B´ y "e" es el error para Val()}
+  { Para validad los datos de entrada }
+  boolNumero,boolBase:boolean;
 
 implementation
 
@@ -77,45 +79,53 @@ begin
   Numero := TNumero.create(sNumero,bBaseDeparture,bMantiza);
   { Luego la base de llegada }
   Val(sBaseArrival,bBaseArrival,e);
-  { ---- Verificamos que la Base de Partida y la Base de Llegada no sean las mismas ---- }
-  if (bBaseDeparture = bBaseArrival) then
+
+  { ********************* VERIFICAMOS LOS DATOS INGRESADOS *************************** }
+  boolNumero:=Numero.validarNumero();
+  if (boolNumero) then
     begin
-      ShowMessage('La Base de Partida es la misma que la Base de Llegada.'+sLineBreak+'Por Favor, verifique los datos para poder continuar.');
+      { ---- Verificamos que la Base de Partida y la Base de Llegada no sean las mismas ---- }
+      if (bBaseDeparture = bBaseArrival) then
+        begin
+          ShowMessage('La Base de Partida es la misma que la Base de Llegada.'+sLineBreak+'Por Favor, verifique los datos para poder continuar.');
+        end
+      else
+        begin
+          { ************* CARGA DE DATOS EN EL PANEL DE CONVERSIÓN DE NUMEROS *********** }
+          { Obtenemos la Parte Entera del Numero ingresado y lo guardamos en una variable }
+          sPartEntera := Numero.calcularPEntera();
+          { Ahora obtenemos la Parte Decimal del Numero y lo guardamos en otra variable }
+          sParteDecimal:= Numero.calcularPDecimal();
+          { Una vez que tenemos ambas parte calculadas, lo que hacemos es convertirlas en la Base de Llegada }
+          { Primero la Parte Entera}
+          sParteEnteraConv:=Numero.cambioBaseEntera(Numero.getBase(),bBaseArrival,sPartEntera);
+          { Luego la Parte Decimal}
+          sParteDecimalConv:=Numero.cambioBaseFraccion(Numero.getBase(),bBaseArrival,sParteDecimal);
+          { Ahora unimos ambas partes para mostrar en la pantalla }
+          sNumeroConv:=sParteEnteraConv+','+sParteDecimalConv;
+          { Normalizamos el Numero Convertido y lo guardamos como un String }
+          sNumeroNormalizado:=Numero.normalizar(sParteEnteraConv,sParteDecimalConv,bBaseArrival);
+
+          { ******** CARGA DE DATOS EN EL PANEL DE FORMATOS DE REPRESENTACIÓN *********** }
+          {}
+          { Realizamos el Corte Simetrico del Numero  }
+          sCorteSimetrico:=Numero.corteSimetrico(sNumeroNormalizado,Numero.getTMantiza(),bBaseArrival);
+          {}
+          sCorte:=Numero.corte(sNumeroNormalizado,Numero.getTMantiza());
+          // Muestas en la Interfaz
+          LabelShowNumberConvert.Caption:=sNumeroConv;
+          LabelShowBase.Caption:=sBaseArrival+') =';
+          LabelShowPFN.Caption:=sNumeroNormalizado;
+          LabelShowNormalized.Caption:=sNumeroConv;
+          { Redondeo por Corte }
+          LabelShowNumberCut.Caption:=sCorte;
+          { Redondeo por Corte Simetrico }
+          LabelShowNumberCutS.Caption:=sCorteSimetrico;
+          end;
     end
   else
-    begin
-      { ************* CARGA DE DATOS EN EL PANEL DE CONVERSIÓN DE NUMEROS *********** }
-      { Obtenemos la Parte Entera del Numero ingresado y lo guardamos en una variable }
-      sPartEntera := Numero.calcularPEntera();
-      { Ahora obtenemos la Parte Decimal del Numero y lo guardamos en otra variable }
-      sParteDecimal:= Numero.calcularPDecimal();
-      { Una vez que tenemos ambas parte calculadas, lo que hacemos es convertirlas en la Base de Llegada }
-      { Primero la Parte Entera}
-      sParteEnteraConv:=Numero.divisionReiterada(bBaseArrival,sPartEntera);
-      { Luego la Parte Decimal}
-      sParteDecimalConv:=Numero.cambioBaseFraccion(Numero.getBase(),bBaseArrival,sParteDecimal);
-      { Ahora unimos ambas partes para mostrar en la pantalla }
-      sNumeroConv:=sParteEnteraConv+','+sParteDecimalConv;
-      { Normalizamos el Numero Convertido y lo guardamos como un String }
-      sNumeroNormalizado:=Numero.normalizar(sParteEnteraConv,sParteDecimalConv,bBaseArrival);
-
-      { ******** CARGA DE DATOS EN EL PANEL DE FORMATOS DE REPRESENTACIÓN *********** }
-      {}
-      { Realizamos el Corte Simetrico del Numero  }
-      sCorteSimetrico:=Numero.corteSimetrico(sNumeroNormalizado,Numero.getTMantiza(),bBaseArrival);
-      {}
-      sCorte:=Numero.corte(sNumeroNormalizado,Numero.getTMantiza());
-      // Muestas en la Interfaz
-      LabelShowNumberConvert.Caption:=sNumeroConv;
-      LabelShowBase.Caption:=sBaseArrival+') =';
-      LabelShowPFN.Caption:=sNumeroNormalizado;
-      LabelShowNormalized.Caption:=sNumeroConv;
-      { Redondeo por Corte }
-      LabelShowNumberCut.Caption:=sCorte;
-      { Redondeo por Corte Simetrico }
-      LabelShowNumberCutS.Caption:=sCorteSimetrico;
-      end;
-
+    ShowMessage('El Numero ingresado no es Valido.'+sLineBreak+
+    'Tiene mas de un punto flotante. Por Favor, verifique el número ingresado.');
   end;
 
 procedure TFormMainErroes.CloseMain(Sender: TObject;
@@ -123,7 +133,7 @@ procedure TFormMainErroes.CloseMain(Sender: TObject;
 begin
   ShowMessage('----- INTEGRANTES DEL GRUPO ------'+sLineBreak+
   'MOGRO, Guillermo'+sLineBreak+'MIRO, Brian'+sLineBreak+'PALACIO, Diego'+sLineBreak+'OROZCO, Eliseo'
-  +sLineBreak+'BARBOSA, Emanuel'+sLineBreak+ 'Pablo, Nicolas'+sLineBreak+'ALANCAY, Kevin');
+  +sLineBreak+'BARBOZA, Emanuel'+sLineBreak+ 'DIAZ, Pablo Nicolas'+sLineBreak+'ALANCAY, Kevin');
 end;
 
 { ------------- BUTTON "LIMPIAR" ----------------------}

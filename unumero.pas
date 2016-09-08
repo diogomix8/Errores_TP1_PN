@@ -5,30 +5,31 @@
   interface
 
   uses
-    Classes, SysUtils, Math;
+    Classes, SysUtils, Math, Dialogs;
 
   type
       { TNumero }
       TNumero = class
-        numero : string; { Numero con parte fraccionaria }
-        base : byte;     { Base del numero }
-        tMantiza : byte; { Mantiza }
         private
-           function expo(a,b:integer):longint;
+          numero : string; { Numero con parte fraccionaria }
+          base : byte;     { Base del numero }
+          tMantiza : byte; { Mantiza }
+
         public
           { El Constructor crea un Nuevo Objeto del TNumero que contiene:
-          n : El numero
-          b : La base de Partida
-          t : Cantidad de Digitos de Precision }
+            n : El numero
+            b : La base de Partida
+            t : Cantidad de Digitos de Precision }
           constructor create(n:string; b:byte; t:byte);
 
           function calcularPEntera():string;
           function calcularPDecimal():string;
           function corte(n:string; t:byte):string;
-          function sumaPonderada(num:string;b:byte):double;
+          function sumaPonderada(sNumEntrada:string;b:byte):string;
           function corteSimetrico(n:string;t,b:byte):string;
-          function divisionReiterada(b:byte; n:string):string;
+          function divisionReiterada(n:string;b:byte):string;
           function multReiterada(baseLlegada:byte;numeroEntrada:string):string;
+          function cambioBaseEntera(basePartida,baseLlegada:byte;numeroEntrada:string):string;
           function cambioBaseFraccion(basePartida,baseLlegada:byte;numeroEntrada:string):string;
           function fraccionADecimal(basePartida:byte;numeroEntrada:string):string;
           function normalizar(pe,pd:string; b:byte):string;
@@ -39,6 +40,8 @@
           function getBase():byte;
           procedure setTMantiza(newT:byte);
           function getTMantiza():byte;
+          {Validacion de datos }
+          function validarNumero():boolean;
           { Destructor }
           destructor destroyObject();
       end;
@@ -68,7 +71,9 @@
        result:= parteEntera;
   end;
 
-  function TNumero.calcularPDecimal():string;  //devolvera un string de la forma 0.numero //asi lo necesito para la convercion de la aprte decimal
+  //devolvera un string de la forma 0.numero
+  //asi lo necesito para la convercion de la aprte decimal
+  function TNumero.calcularPDecimal():string;
   var
       parteDecimal:string;
       i,j:byte;
@@ -97,212 +102,203 @@
             result:=n+cad;
        end;
 
-  function TNumero.expo(a,b:integer): longint;
-  var
-    i: integer;
-  begin
-   if b<>0 then
+  function TNumero.corteSimetrico(n:string;t,b:byte):string;
+   var
+       ac,a,digito,d:integer;
+       c:char;
+       cad,cadena,l:string;
+       t1,p:byte;
    begin
-     for i:= 2 to b do
-       	  a:=a*a;
-     end
-   else
- 	  a:=1;
-  expo:= a;
-  end;
-  function TNumero.sumaPonderada(num:string;b:byte):double;
-  var
-    i,p,nume,c,j: byte;
-    nue,nue2:real;
-
-  begin
-    p:=pos('.',num);
-    i:= length(num)-p;
-    nue:=0;
-    nue2:=0;
-
-    for j:= 1 to i do
-      	  begin
-              if num[j] in ['A'..'F'] then
-              case num[j] of
-                  'A': nue:= nue + (10 * expo(b,-i));
-                  'B': nue:= nue + (11 * expo(b,-i));
-                  'C': nue:= nue + (12 * expo(b,-i));
-                  'D': nue:= nue + (13 * expo(b,-i));
-                  'E': nue:= nue + (14 * expo(b,-i));
-                  'F': nue:= nue + (15 * expo(b,-i));
+        t1:=0;
+        c:= n[t+3];
+        if((c='A')or(c='B')or(c='C')or(c='D')or(c='E')or(c='F'))then
+        begin
+           case c of
+           'A': digito:=10;
+           'B': digito:=11;
+           'C': digito:=12;
+           'D': digito:=13;
+           'E': digito:=14;
+           'F': digito:=15;
+           end;
+        end
+        else
+        begin
+             val(c,digito,a);
+        end;
+        ac:=1;
+        p:=pos('x',n);
+        cad:=copy(n,p,length(n));
+        if(t<=length(n))then
+        begin
+           if(digito>=b/2)then
+           begin
+                c:=n[t+2];
+                if((c='A')or(c='B')or(c='C')or(c='D')or(c='E')or(c='F'))then
+                begin
+                   case c of
+                     'A': d:=10;
+                     'B': d:=11;
+                     'C': d:=12;
+                     'D': d:=13;
+                     'E': d:=14;
+                     'F': d:=15;
+                     end;
+                   d:=d+1;
+                end
+                else
+                begin
+                  val(c,d,a);
+                  d:=d+1;
+                end;
+                if(d=b)then
+                begin
+                   str(d,l);
+                   c:=l[1];
+                   l:='';
+                   n[t+2]:=c;
+                   t:=t-1;
+                   ac:=1;
+                   while((ac=1) and (t<>0))do
+                   begin
+                       c:=n[t+2];
+                       if((c='A')or(c='B')or(c='C')or(c='D')or(c='E')or(c='F'))then
+                       begin
+                          case c of
+                          'A': d:=10;
+                          'B': d:=11;
+                          'C': d:=12;
+                          'D': d:=13;
+                          'E': d:=14;
+                          'F': d:=15;
+                          end;
+                           d:=d+1;
+                       end
+                       else
+                       begin
+                         val(c,d,a);
+                         d:=d+1;
+                       end;
+                       if(d=b)then
+                       begin
+                          d:=0;
+                          str(d,l);
+                          c:=l[1];
+                          l:='';
+                          n[t+2]:=c;
+                          t:=t-1;
+                          ac:=1;
+                       end
+                       else
+                       begin
+                           if(d>=10)then
+                           begin
+                               case d of
+                                     10: c:='A';
+                                     11: c:='B';
+                                     12: c:='C';
+                                     13: c:='D';
+                                     14: c:='E';
+                                     15: c:='F';
+                               end;
+                           end
+                           else
+                           begin
+                               str(d,l);
+                               c:=l[1];
+                               l:='';
+                           end;
+                           n[t+2]:=c;
+                           t:=t-1;
+                           ac:=0;
+                       end
+                  end;
+                  if(n[3]='0')then
+                  begin
+                       cadena:=copy(n,3,t1+3);
+                       delete(cadena,t+1,length(n));
+                       p:=pos('^',cad);
+                       c:=cad[p+1];
+                       val(c,d,a);
+                       d:=d+1;
+                       str(d,l);
+                       c:=l[1];
+                       l:='';
+                       cad[p+1]:=c;
+                       result:='0'+','+'1'+cadena+cad;
+                  end
+                  else
+                  begin
+                       delete(n,3+t,length(n));
+                       result:=n;
+                  end;
               end
               else
               begin
-                  val(num[j],nume,c);
-                  nue:= nue + nume * expo(b,-i);
+                str(d,l);
+                c:=l[1];
+                n[t+2]:=c;
+                delete(n,3+t,length(n));
+                result:=n+cad;
               end;
-      	  end;
-     for j:= 1 to p-1 do
-      	  begin
-      	      if num[j] in ['A'..'F'] then
-      	      case num[j] of
-      	          'A': nue2:= nue2 + (10 * expo(b,(p-1)-i));
-      	          'B': nue2:= nue2 + (11 * expo(b,(p-1)-i));
-      	          'C': nue2:= nue2 + (12 * expo(b,(p-1)-i));
-      	          'D': nue2:= nue2 + (13 * expo(b,(p-1)-i));
-      	          'E': nue2:= nue2 + (14 * expo(b,(p-1)-i));
-      	          'F': nue2:= nue2 + (15 * expo(b,(p-1)-i));
-      	      end
-      	      else
-      	      begin
-      	          val(num[j],nume,c);
-      	          nue2:= nue2 + nume * expo(b,(p-1)-i);
-      	      end;
-      	  end;
-	  sumaPonderada:= (nue2 + nue);
+           end
+           else
+           begin
+                result:=corte(n,t);
+           end;
+        end
+        else
+        begin
+             result:=corte(n,t);
+        end;
   end;
 
-
-  function TNumero.corteSimetrico(n:string;t,b:byte):string;
-       var
-           ac,a,digito,d:integer;
-           c:char;
-           cad,cadena,l:string;
-           t1,p:byte;
-       begin
-            t1:=0;
-            c:= n[t+3];
-            if((c='A')or(c='B')or(c='C')or(c='D')or(c='E')or(c='F'))then
-            begin
-               case c of
-               'A': digito:=10;
-               'B': digito:=11;
-               'C': digito:=12;
-               'D': digito:=13;
-               'E': digito:=14;
-               'F': digito:=15;
-               end;
-            end
-            else
-            begin
-                 val(c,digito,a);
-            end;
-            ac:=1;
-            p:=pos('x',n);
-            cad:=copy(n,p,length(n));
-            if(t<=length(n))then
-               begin
-               if(digito>=b/2)then
-                   begin
-                          c:=n[t+2];
-
-                          if((c='A')or(c='B')or(c='C')or(c='D')or(c='E')or(c='F'))then
-                           begin
-                           case c of
-                             'A': d:=10;
-                             'B': d:=11;
-                             'C': d:=12;
-                             'D': d:=13;
-                             'E': d:=14;
-                             'F': d:=15;
-                             end;
-                           d:=d+1;
-                          end
-                         else
-                         begin val(c,d,a);
-
-                          d:=d+1;
-                          end;
-                          if(d=b)then
-                                     begin
-
-                                         str(d,l);
-                                         c:=l[1];
-                                         l:='';
-                                         n[t+2]:=c;
-                                         t:=t-1;
-                                         ac:=1;
-                                        while((ac=1) and (t<>0))do
-                                                       begin
-                                                           c:=n[t+2];
-                                                           if((c='A')or(c='B')or(c='C')or(c='D')or(c='E')or(c='F'))then
-                                                      begin
-                                                        case c of
-                                                        'A': d:=10;
-                                                        'B': d:=11;
-                                                        'C': d:=12;
-                                                        'D': d:=13;
-                                                        'E': d:=14;
-                                                        'F': d:=15;
-                                                        end;
-                                                         d:=d+1;
-                                                      end
-                                                         else
-                                                         begin val(c,d,a);
-                                                           d:=d+1;
-                                                           end;
-                                                       if(d=b)then
-                                                                  begin
-                                                                      d:=0;
-                                                                      str(d,l);
-                                                                       c:=l[1];
-                                                                       l:='';
-                                                                      n[t+2]:=c;
-                                                                      t:=t-1;
-                                                                      ac:=1;
-                                                                    end
-                                                      else
-                                                           begin
-                                                             if(d>=10)then
-                                                               begin
-                                                                 case d of
-                                                                       10: c:='A';
-                                                                       11: c:='B';
-                                                                        12: c:='C';
-                                                                         13: c:='D';
-                                                                        14: c:='E';
-                                                                        15: c:='F';
-                                                                      end;
-                                                                end
-                                                             else begin
-                                                               str(d,l);
-                                                             c:=l[1];
-                                                             l:='';end;
-                                                             n[t+2]:=c;
-                                                              t:=t-1;
-                                                              ac:=0;
-
-                                                            end
-                                                      end;
-                                    if(n[3]='0')then
-                                               begin cadena:=copy(n,3,t1+3);
-                                                  delete(cadena,t+1,length(n));
-                                                  p:=pos('^',cad);
-                                                  c:=cad[p+1]; val(c,d,a); d:=d+1;  str(d,l); c:=l[1]; l:=''; cad[p+1]:=c;
-                                                  result:='0'+','+'1'+cadena+cad;
-                                               end
-                                    else begin
-                                    delete(n,3+t,length(n));
-                                           result:=n;
-                                         end;
-                                   end
-                          else
-                             begin
-                              str(d,l);
-                              c:=l[1];
-                              n[t+2]:=c;
-                              delete(n,3+t,length(n));
-                              result:=n+cad;
-                             end;
-                  end
-
-                             else
-                                begin
-                                result:=corte(n,t);
-                               end;
-               end
-               else
+  { Convierte la parte entera de un numero de Base B a Base 10 }
+  { sNumEntrada : La parte entera del Numero como "string" }
+  { b: Base de Partida del Numero. }
+  { La funcion utiliza el metodo "power" de la libreria Math de Object Pascal que nos devuelve un "float" }
+  function TNumero.sumaPonderada(sNumEntrada:string;b:byte):string;
+  var
+    exp,iNumSalida,iNumero:integer;
+    c,j: byte;
+    dNum:double;
+    sNumSalida:string;
+  begin
+      { Asignamos el tamaño de la parte entera del numero menos 1 a "exp" que sera nuestro exponente a elevar }
+      exp:= length(sNumEntrada)-1;
+      { Ponemos en 0 al numero donde vamos a sumar el resultado que vayamos obteniendo }
+      dNum:=0.0;
+      for j:= 1 to length(sNumEntrada) do
+      	    begin
+                if sNumEntrada[j] in ['A'..'F'] then
                 begin
-                 result:=corte(n,t);
-               end;
-       end;
-  function TNumero.divisionReiterada(b:byte; n:string):string;
+                    case sNumEntrada[j] of
+                        'A': dNum:= dNum + (10 * power(b,exp));
+                        'B': dNum:= dNum + (11 * power(b,exp));
+                        'C': dNum:= dNum + (12 * power(b,exp));
+                        'D': dNum:= dNum + (13 * power(b,exp));
+                        'E': dNum:= dNum + (14 * power(b,exp));
+                        'F': dNum:= dNum + (15 * power(b,exp));
+                    end;
+                    { Decrementamos el exponente para el siguiente numero }
+                    dec(exp);
+                end
+                else
+                begin
+                    val(sNumEntrada[j],iNumero,c);
+                    dNum:= dNum + iNumero * power(b,exp);
+                    { Decrementamos el exponente para el siguiente numero }
+                    dec(exp);
+                end;
+      	    end;
+      { Truncamo el numero conseguido para obtener su parte entera }
+      iNumSalida:= Trunc(dNum);
+      { Lo convertimos a "string" }
+      Str(iNumSalida,sNumSalida);
+      result := sNumSalida;
+  end;
+
+  function TNumero.divisionReiterada(n:string;b:byte):string;
     var
           resto2:string;
           resto, iNum:integer;
@@ -345,6 +341,25 @@
          result:=resto2+result;
     end;
 
+  { Convierte la parte entera de un numero en Base B a otro de base B´ }
+  function TNumero.cambioBaseEntera(basePartida,baseLlegada:byte;numeroEntrada:string):string;
+  var
+        sIntermedio, sNumSalida: string;
+        e : byte;
+  begin
+     if (basePartida = 10) then sNumSalida:=divisionReiterada(numeroEntrada,baseLlegada)
+     else
+     begin
+       if (baseLlegada = 10) then sNumSalida:=sumaPonderada(numeroEntrada,basePartida)
+       else
+       begin
+           sIntermedio := sumaPonderada(numeroEntrada,basePartida);
+           sNumSalida := divisionReiterada(sIntermedio,baseLLegada);
+       end;
+     end;
+     result := sNumSalida;
+  end;
+
   function TNumero.multReiterada(baseLlegada:byte;numeroEntrada:string):string; //el decimal a convertir debe de ser de tipo 0.*numeros*
   var
   i,parteEntera,error:integer;
@@ -385,8 +400,8 @@
 
   function TNumero.cambioBaseFraccion(basePartida,baseLlegada:byte;numeroEntrada:string):string;
   var
-  sIntermedio, sNumSalida: string;
-  e : byte;
+      sIntermedio, sNumSalida: string;
+      e : byte;
   begin
      if basePartida=10 then sNumSalida := multReiterada(baseLLegada,numeroEntrada)
      else
@@ -489,6 +504,7 @@
            result:= sNormalizado;
     end;
 
+  {------------------- Setter & Getters ----------------------------}
   procedure TNumero.setNumero(newN:string);
   begin
     numero := newN;
@@ -518,6 +534,38 @@
   begin
     result := tMantiza;
   end;
+  {------------------- Setter & Getters ----------------------------}
+
+  {----------------------- VALIDACION DE ENTRADA DE DATOS ------------------------}
+  { Vamos a validar que el numero contenga un (1) solo punto flotante }
+  { Si la funcion devuelve "TRUE" entonces es un numero valido con un (1) solo pto flotante }
+  function TNumero.validarNumero():boolean;
+  var
+       cont,j,p:byte;
+       sAux:string;
+  begin
+    cont:=0;
+    { Asignamos el Numero en "string" a 'sAux' }
+    sAux:=getNumero();
+    { Buscamos la primera posicion del "." flotante }
+    p:=Pos('.',sAux);
+    { Si 'p' contiene una posicion valida (<>0), incrementamos el contador }
+    while (p <> 0) do
+      begin
+       { Incrementamos el contador }
+       inc(cont);
+       { Borramos el substring hasta la posicion 'p' }
+       Delete(sAux,1,p);
+       { Buscamos la segunda posicion del "." flotante (si la hay) }
+       p:=Pos('.',sAux);
+      end;
+    if (cont = 1) then
+      result:=true
+    else
+      result:=false;
+  end;
+
+  {----------------------- VALIDACION DE ENTRADA DE DATOS ------------------------}
 
   { Liberamos la Memoria }
   destructor TNumero.destroyObject();

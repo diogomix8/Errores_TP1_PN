@@ -38,21 +38,21 @@ object FormMainErroes: TFormMainErroes
     Width = 148
     ItemHeight = 15
     Items.Strings = (
-      '2'
+      '2 (Binario)'
       '3'
       '4'
       '5'
       '6'
       '7'
-      '8'
+      '8 (Octal)'
       '9'
-      '10'
+      '10 (Decimal)'
       '11'
       '12'
       '13'
       '14'
       '15'
-      '16'
+      '16 (Hexadecimal)'
     )
     OnChange = ComboBoxBaseArrivalChange
     TabOrder = 1
@@ -79,7 +79,7 @@ object FormMainErroes: TFormMainErroes
   object PanelNumberConvert: TPanel
     Left = 16
     Height = 146
-    Top = 96
+    Top = 104
     Width = 824
     BorderStyle = bsSingle
     ClientHeight = 142
@@ -255,21 +255,21 @@ object FormMainErroes: TFormMainErroes
     Width = 152
     ItemHeight = 15
     Items.Strings = (
-      '2'
+      '2 (Binario)'
       '3'
       '4'
       '5'
       '6'
       '7'
-      '8'
+      '8 (Octal)'
       '9'
-      '10'
+      '10 (Decimal)'
       '11'
       '12'
       '13'
       '14'
       '15'
-      '16'
+      '16 (Hexadecimal)'
     )
     OnChange = ComboBoxBaseDepartureChange
     TabOrder = 7
