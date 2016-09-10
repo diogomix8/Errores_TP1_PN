@@ -25,7 +25,6 @@
     <RunParams>
       <local>
         <FormatVersion Value="1"/>
-        <HostApplicationFilename Value="/usr/bin/fpc"/>
       </local>
     </RunParams>
     <RequiredPackages Count="1">
@@ -33,7 +32,7 @@
         <PackageName Value="LCL"/>
       </Item1>
     </RequiredPackages>
-    <Units Count="2">
+    <Units Count="3">
       <Unit0>
         <Filename Value="ErroresTP1.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -41,11 +40,16 @@
       <Unit1>
         <Filename Value="uformmainerrores.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Errores"/>
+        <ComponentName Value="FormMainErroes"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UFormMainErrores"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="unumero.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UNumero"/>
+      </Unit2>
     </Units>
   </ProjectOptions>
   <CompilerOptions>
@@ -66,7 +70,7 @@
     </Linking>
   </CompilerOptions>
   <Debugging>
-    <Exceptions Count="3">
+    <Exceptions Count="4">
       <Item1>
         <Name Value="EAbort"/>
       </Item1>
@@ -76,6 +80,9 @@
       <Item3>
         <Name Value="EFOpenError"/>
       </Item3>
+      <Item4>
+        <Name Value="EReadError"/>
+      </Item4>
     </Exceptions>
   </Debugging>
 </CONFIG>

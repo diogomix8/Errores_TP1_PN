@@ -12,13 +12,13 @@ object FormMainErroes: TFormMainErroes
     Left = 24
     Height = 15
     Top = 25
-    Width = 111
+    Width = 113
     Caption = 'Ingrese un Número : '
     ParentColor = False
   end
   object EditNumber: TEdit
     Left = 144
-    Height = 23
+    Height = 27
     Top = 17
     Width = 384
     TabOrder = 0
@@ -27,16 +27,16 @@ object FormMainErroes: TFormMainErroes
     Left = 24
     Height = 15
     Top = 64
-    Width = 129
+    Width = 128
     Caption = 'Elija la Base de Llegada : '
     ParentColor = False
   end
   object ComboBoxBaseArrival: TComboBox
     Left = 160
-    Height = 23
+    Height = 27
     Top = 56
     Width = 148
-    ItemHeight = 15
+    ItemHeight = 0
     Items.Strings = (
       '2 (Binario)'
       '3'
@@ -82,14 +82,14 @@ object FormMainErroes: TFormMainErroes
     Top = 104
     Width = 824
     BorderStyle = bsSingle
-    ClientHeight = 142
-    ClientWidth = 820
+    ClientHeight = 144
+    ClientWidth = 822
     TabOrder = 4
     object LabelNumber: TLabel
       Left = 8
       Height = 15
       Top = 40
-      Width = 90
+      Width = 91
       Caption = 'Número en Base '
       ParentColor = False
     end
@@ -111,7 +111,7 @@ object FormMainErroes: TFormMainErroes
       Left = 8
       Height = 15
       Top = 72
-      Width = 51
+      Width = 48
       Caption = 'P. F. N. = '
       ParentColor = False
     end
@@ -126,7 +126,7 @@ object FormMainErroes: TFormMainErroes
       Left = 8
       Height = 15
       Top = 104
-      Width = 91
+      Width = 92
       Caption = 'Sin Normalizar = '
       ParentColor = False
     end
@@ -141,7 +141,7 @@ object FormMainErroes: TFormMainErroes
       Left = 8
       Height = 18
       Top = 13
-      Width = 207
+      Width = 208
       Caption = 'CONVERSIÓN DEL NÚMERO'
       Font.CharSet = ANSI_CHARSET
       Font.Height = -15
@@ -159,14 +159,14 @@ object FormMainErroes: TFormMainErroes
     Top = 256
     Width = 824
     BorderStyle = bsSingle
-    ClientHeight = 116
-    ClientWidth = 820
+    ClientHeight = 118
+    ClientWidth = 822
     TabOrder = 5
     object LabelTitleFormat: TLabel
       Left = 8
       Height = 18
       Top = 8
-      Width = 253
+      Width = 255
       Caption = 'FORMATOS DE REPRESENTACIÓN'
       Font.CharSet = ANSI_CHARSET
       Font.Height = -15
@@ -181,7 +181,7 @@ object FormMainErroes: TFormMainErroes
       Left = 8
       Height = 15
       Top = 48
-      Width = 72
+      Width = 71
       Caption = '- Por Corte = '
       ParentColor = False
     end
@@ -212,16 +212,16 @@ object FormMainErroes: TFormMainErroes
     Left = 328
     Height = 15
     Top = 64
-    Width = 183
+    Width = 182
     Caption = 'Cantidad de Digitos de Precision :  '
     ParentColor = False
   end
   object ComboBoxTDigit: TComboBox
     Left = 520
-    Height = 23
+    Height = 27
     Top = 56
     Width = 100
-    ItemHeight = 15
+    ItemHeight = 0
     Items.Strings = (
       '1'
       '2'
@@ -244,16 +244,16 @@ object FormMainErroes: TFormMainErroes
     Left = 544
     Height = 15
     Top = 25
-    Width = 125
+    Width = 126
     Caption = 'Elija la Base de Partida : '
     ParentColor = False
   end
   object ComboBoxBaseDeparture: TComboBox
     Left = 680
-    Height = 23
+    Height = 27
     Top = 17
     Width = 152
-    ItemHeight = 15
+    ItemHeight = 0
     Items.Strings = (
       '2 (Binario)'
       '3'

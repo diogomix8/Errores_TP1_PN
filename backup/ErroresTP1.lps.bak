@@ -3,30 +3,86 @@
   <ProjectSession>
     <Version Value="9"/>
     <BuildModes Active="Default"/>
-    <Units Count="2">
+    <Units Count="10">
       <Unit0>
         <Filename Value="ErroresTP1.lpr"/>
         <IsPartOfProject Value="True"/>
         <EditorIndex Value="-1"/>
-        <WindowIndex Value="-1"/>
-        <TopLine Value="-1"/>
-        <CursorPos X="-1" Y="-1"/>
-        <UsageCount Value="20"/>
+        <CursorPos X="34" Y="21"/>
+        <UsageCount Value="143"/>
       </Unit0>
       <Unit1>
         <Filename Value="uformmainerrores.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="Errores"/>
+        <ComponentName Value="FormMainErroes"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
         <UnitName Value="UFormMainErrores"/>
         <IsVisibleTab Value="True"/>
-        <TopLine Value="12"/>
-        <CursorPos X="37" Y="50"/>
-        <UsageCount Value="20"/>
+        <TopLine Value="83"/>
+        <CursorPos X="73" Y="155"/>
+        <UsageCount Value="140"/>
         <Loaded Value="True"/>
         <LoadedDesigner Value="True"/>
       </Unit1>
+      <Unit2>
+        <Filename Value="unumero.pas"/>
+        <IsPartOfProject Value="True"/>
+        <UnitName Value="UNumero"/>
+        <EditorIndex Value="1"/>
+        <TopLine Value="369"/>
+        <CursorPos X="49" Y="493"/>
+        <UsageCount Value="142"/>
+        <Loaded Value="True"/>
+      </Unit2>
+      <Unit3>
+        <Filename Value="/Programación Numerica 2015/Trabajos Prácticos/Trabajo Práctico 1/TP1/programa.pas"/>
+        <UnitName Value="programaErrores"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="289"/>
+        <CursorPos X="25" Y="304"/>
+        <UsageCount Value="49"/>
+      </Unit3>
+      <Unit4>
+        <Filename Value="/Programación Numerica 2015/Trabajos Prácticos/Trabajo Practico 3/Polinomios/mainform.pas"/>
+        <UnitName Value="MainForm"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="14"/>
+        <CursorPos X="41" Y="148"/>
+        <UsageCount Value="4"/>
+      </Unit4>
+      <Unit5>
+        <Filename Value="/Programación Numerica 2015/Trabajos Prácticos/Trabajo Práctico 1/SumaPonderada.pas"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="4"/>
+        <CursorPos X="37" Y="10"/>
+        <UsageCount Value="63"/>
+      </Unit5>
+      <Unit6>
+        <Filename Value="uformmainerrores.lfm"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="9"/>
+        <DefaultSyntaxHighlighter Value="LFM"/>
+      </Unit6>
+      <Unit7>
+        <Filename Value="C:/Users/Diego Fabian Palacio/Desktop/SumaPonderada.lpr"/>
+        <EditorIndex Value="-1"/>
+        <CursorPos X="45" Y="27"/>
+        <UsageCount Value="8"/>
+      </Unit7>
+      <Unit8>
+        <Filename Value="/Programación Numerica 2015/Trabajos Prácticos/Trabajo Practico 3/Polinomios/Polinomios.lpr"/>
+        <EditorIndex Value="-1"/>
+        <UsageCount Value="4"/>
+      </Unit8>
+      <Unit9>
+        <Filename Value="/Programación Numerica 2015/Trabajos Prácticos/Trabajo Practico 3/Polinomios/upolinomios.pas"/>
+        <UnitName Value="UPolinomios"/>
+        <EditorIndex Value="-1"/>
+        <TopLine Value="106"/>
+        <CursorPos X="29" Y="21"/>
+        <UsageCount Value="4"/>
+      </Unit9>
     </Units>
     <JumpHistory HistoryIndex="-1"/>
   </ProjectSession>

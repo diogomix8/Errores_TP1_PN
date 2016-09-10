@@ -107,12 +107,12 @@ begin
           sNumeroNormalizado:=Numero.normalizar(sParteEnteraConv,sParteDecimalConv,bBaseArrival);
 
           { ******** CARGA DE DATOS EN EL PANEL DE FORMATOS DE REPRESENTACIÓN *********** }
-          {}
-          { Realizamos el Corte Simetrico del Numero  }
+          { Realizamos el Redondeo por Corte Simetrico del Numero con los "t" digitos de presicón elejidos.  }
           sCorteSimetrico:=Numero.corteSimetrico(sNumeroNormalizado,Numero.getTMantiza(),bBaseArrival);
-          {}
+          { Luego el Redondeo por Corte tambien con los "t" numeros de presición. }
           sCorte:=Numero.corte(sNumeroNormalizado,Numero.getTMantiza());
-          // Muestas en la Interfaz
+
+          { Actualizamos los datos de salida en los paneles }
           LabelShowNumberConvert.Caption:=sNumeroConv;
           LabelShowBase.Caption:=sBaseArrival+') =';
           LabelShowPFN.Caption:=sNumeroNormalizado;
@@ -125,7 +125,7 @@ begin
     end
   else
     ShowMessage('El Numero ingresado no es Valido.'+sLineBreak+
-    'Tiene mas de un punto flotante. Por Favor, verifique el número ingresado.');
+    'Tiene mas de un punto flotante.'+sLineBreak+' Por Favor, verifique el número ingresado.');
   end;
 
 procedure TFormMainErroes.CloseMain(Sender: TObject;

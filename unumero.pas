@@ -419,14 +419,12 @@
 
   function TNumero.fraccionADecimal(basePartida:byte;numeroEntrada:string):string;
   var
-  i,j,num,error:byte;
-  aDecimal:double;
-  //sNumSalida,sNumEntrada:string;
-  sNumSalida:string;
-  parteEntera:integer;
-  bandera:boolean;
+    i,j,num,error:byte;
+    aDecimal:double;
+    sNumSalida:string;
+    parteEntera:integer;
+    bandera:boolean;
   begin
-    //Str(numeroEntrada,sNumEntrada);
     aDecimal:=0;
     j:=1;
     for i:=3 to length(numeroEntrada) do
@@ -471,6 +469,10 @@
    result := sNumSalida;
   end;
 
+  { Devuelve el Número convertido en la Base B' en su forma de Punto Flotante Normalizado }
+  { pe : Parte Entera del Número  }
+  { pd : Parte Decimal del Número }
+  { b : Base de Llegada (B')      }
   function TNumero.normalizar(pe,pd:string; b:byte):string;
     var
          sNormalizado,sBase,exp:string;
