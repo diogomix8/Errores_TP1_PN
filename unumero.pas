@@ -57,6 +57,7 @@
        tMantiza:=t;
   end;
 
+  { Devuelde la parte entera del Número en "stirng", trabajando el numero primero como integer }
   function TNumero.calcularPEntera():string;
   var
       parteEntera:string;
